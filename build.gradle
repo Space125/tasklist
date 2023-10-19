@@ -25,10 +25,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok:' version { lonmbokVersion }
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql'
-    annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql:' version { postgresqlVersion }
+    annotationProcessor 'org.projectlombok:lombok' version { lonmbokVersion }
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
