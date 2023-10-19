@@ -18,9 +18,7 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-20.04
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -28,8 +26,9 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - uses: actions/cache@v3
+        cache: gradle
+    - name: Make gradlew executable
+      run: chmod +x ./gradlew
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      with:
-        arguments: build
+      uses: gradle/gradle-build-action@v2 # v2.6.0
+    - run: ./gradlew clean build
