@@ -32,32 +32,33 @@ public class UserController {
     private final TaskMapper taskMapper;
 
     @PutMapping
-    public UserDto update(@Validated(OnUpdate.class) @RequestBody UserDto dto) {
+    public UserDto update(@Validated(OnUpdate.class) @RequestBody final UserDto dto) {
         User user = userMapper.toEntity(dto);
         User updatedUser = userService.update(user);
         return userMapper.toDto(updatedUser);
     }
 
     @GetMapping("/{id}")
-    public UserDto getById(@PathVariable Long id) {
+    public UserDto getById(@PathVariable final Long id) {
         User user = userService.getById(id);
         return userMapper.toDto(user);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable final Long id) {
         userService.delete(id);
-        ;
     }
 
     @GetMapping("/{id}/tasks")
-    public List<TaskDto> getTaskByUserId(@PathVariable Long id) {
+    public List<TaskDto> getTaskByUserId(@PathVariable final Long id) {
         List<Task> tasks = taskService.getAllByUserId(id);
         return taskMapper.toDto(tasks);
     }
 
     @PostMapping("/{id}/tasks")
-    public TaskDto createTask(@Validated(OnCreate.class) @PathVariable Long id, @RequestBody TaskDto dto) {
+    public TaskDto createTask(@Validated(OnCreate.class)
+                              @PathVariable final Long id,
+                              @RequestBody final TaskDto dto) {
         Task task = taskMapper.toEntity(dto);
         Task createdTask = taskService.create(task, id);
         return taskMapper.toDto(createdTask);

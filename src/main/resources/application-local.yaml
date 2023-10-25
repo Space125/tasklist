@@ -6,4 +6,20 @@ spring:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      continue-on-error: false
+#      data-locations: classpath:demo_data.sql
+
+security:
+  jwt:
+    secret-key: ${JWT_SECRET_KEY}
+    access-expiration: ${JWT_ACCESS_EXPIRED}
+    refresh-expiration: ${JWT_REFRESH_EXPIRED}
+
+logging:
+  level:
+    root: debug
+
 

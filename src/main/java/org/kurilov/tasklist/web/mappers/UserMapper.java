@@ -10,10 +10,8 @@ import org.mapstruct.Mapping;
  * @author Ivan Kurilov on 19.10.2023
  */
 @Mapper(componentModel = "spring")
-public interface UserMapper {
-
-    UserDto toDto(User user);
-
+public interface UserMapper extends Mappable<User, UserDto> {
+    @Override
     @Mapping(target = "roles", ignore = true)
     @Mapping(target = "tasks", ignore = true)
     User toEntity(UserDto dto);
