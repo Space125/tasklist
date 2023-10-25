@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'org.kurilov'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 java {
     sourceCompatibility = '17'
@@ -23,16 +23,19 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.hibernate.validator:hibernate-validator:' version { hibernateValidatorVersion }
-    implementation 'jakarta.validation:jakarta.validation-api:' version { jakartaValidationApiVersion }
-    compileOnly 'org.projectlombok:lombok:' version { lonmbokVersion }
-    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.hibernate.validator:hibernate-validator:' + hibernateValidatorVersion
+    implementation 'jakarta.validation:jakarta.validation-api:' + jakartaValidationApiVersion
+    implementation 'org.mapstruct:mapstruct:' + mapstructVersion
+    implementation 'io.jsonwebtoken:jjwt-api:' + jjwtVersion
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:' + jjwtVersion
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:' + jjwtVersion
+    compileOnly 'org.projectlombok:lombok:' + lonmbokVersion
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql:' version { postgresqlVersion }
-    annotationProcessor 'org.projectlombok:lombok:' version { lonmbokVersion }
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    runtimeOnly 'org.postgresql:postgresql:' + postgresqlVersion
+    annotationProcessor 'org.projectlombok:lombok:' + lonmbokVersion
+    annotationProcessor 'org.mapstruct:mapstruct-processor:' + mapstructVersion
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

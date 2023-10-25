@@ -5,5 +5,5 @@ package org.kurilov.tasklist.domain.user;
  */
 public enum Role {
     ROLE_USER,
-    RULE_ADMIN
+    ROLE_ADMIN
 }
