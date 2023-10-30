@@ -2,6 +2,7 @@ package org.kurilov.tasklist.service.impl;
 
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.kurilov.tasklist.domain.exception.ResourceNotFoundException;
 import org.kurilov.tasklist.domain.task.Status;
 import org.kurilov.tasklist.domain.task.Task;
@@ -16,6 +17,7 @@ import java.util.List;
  * @author Ivan Kurilov on 19.10.2023
  */
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
 
@@ -55,6 +57,9 @@ public class TaskServiceImpl implements TaskService {
     @Override
     @Transactional
     public void delete(final Long id) {
-        taskRepository.delete(id);
+        long deletedCount = taskRepository.delete(id);
+        if (deletedCount == 0) {
+            throw new ResourceNotFoundException(String.format("Task with id: %d not found", id));
+        }
     }
 }

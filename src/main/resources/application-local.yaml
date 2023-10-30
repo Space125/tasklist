@@ -6,11 +6,19 @@ spring:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:liquibase/db.changelog.yaml
+    enabled: true
+    default-schema: ${POSTGRES_SCHEMA}
   sql:
     init:
-      mode: always
+      mode: never
       continue-on-error: false
-#      data-locations: classpath:demo_data.sql
+  jpa:
+    show-sql: true
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
 
 security:
   jwt:
@@ -18,8 +26,11 @@ security:
     access-expiration: ${JWT_ACCESS_EXPIRED}
     refresh-expiration: ${JWT_REFRESH_EXPIRED}
 
-logging:
-  level:
-    root: debug
+springdoc:
+  override-with-generic-response: false
+
+#logging:
+#  level:
+#    root: debug
 
 

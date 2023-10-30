@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,7 +54,7 @@ public class ControllerAdvice {
         ExceptionBody exceptionBody = new ExceptionBody("Validation failed");
         List<FieldError> errors = e.getBindingResult().getFieldErrors();
         exceptionBody.setErrors(errors.stream()
-                .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage)));
+                .collect(HashMap::new, (m, v) -> m.put(v.getField(), v.getDefaultMessage()), HashMap::putAll));
         return exceptionBody;
     }
 
