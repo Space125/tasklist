@@ -1,0 +1,24 @@
+[versions]
+lonmbok = "1.18.30"
+postgresql = "42.6.0"
+mapstruct = "1.5.5.Final"
+hibernateValidator = "8.0.1.Final"
+jakartaValidationApi = "3.0.2"
+jjwt = "0.12.3"
+mybatis = "3.0.2"
+liquibase = "4.24.0"
+springdoc = "2.2.0"
+
+[libraries]
+mybatis-spring-boot-starter = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter", version.ref = "mybatis" }
+hibernate-validator = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernateValidator" }
+jakarta-validation-api = { module = "jakarta.validation:jakarta.validation-api", version.ref = "jakartaValidationApi" }
+mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
+mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
+jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
+jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
+liquibase-core = { module = "org.liquibase:liquibase-core", version.ref = "liquibase" }
+springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+lombok = { module = "org.projectlombok:lombok", version.ref = "lonmbok" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }

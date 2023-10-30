@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-//@PropertySource("classpath:/application-local.yaml")
 @EnableTransactionManagement
 public class TasklistApplication {
 

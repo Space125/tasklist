@@ -2,6 +2,12 @@
 
 This application helps you organize creating and accessing tasks for users.
 
+## Model diagram
+
+![Class diagram](docs/TL_Model.png)
+
+We have two main entities - **User** and **Task**.
+
 ## Environment
 
 To run this application you need to create `.env` file in root directory with next environments:
