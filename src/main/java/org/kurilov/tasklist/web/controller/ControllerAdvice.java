@@ -2,6 +2,7 @@ package org.kurilov.tasklist.web.controller;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 import org.kurilov.tasklist.domain.exception.AccessDeniedException;
 import org.kurilov.tasklist.domain.exception.ExceptionBody;
 import org.kurilov.tasklist.domain.exception.ResourceMappingException;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
  * @author Ivan Kurilov on 24.10.2023
  */
 @RestControllerAdvice
+@Slf4j
 public class ControllerAdvice {
 
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -76,7 +78,8 @@ public class ControllerAdvice {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ExceptionBody handleException(final Exception ignore) {
+    public ExceptionBody handleException(final Exception e) {
+        log.error("INTERNAL_SERVER_ERROR: {}", e.getMessage());
         return new ExceptionBody("Internal error.");
     }
 }

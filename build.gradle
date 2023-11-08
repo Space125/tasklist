@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.4'
     id 'io.spring.dependency-management' version '1.1.3'
+    id 'jacoco'
 }
 
 group = 'org.kurilov'
@@ -25,6 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation libs.preliquibase.spring.boot.starter
     implementation libs.mybatis.spring.boot.starter
     implementation libs.hibernate.validator
     implementation libs.jakarta.validation.api
@@ -39,9 +41,43 @@ dependencies {
     runtimeOnly libs.postgresql
     annotationProcessor libs.lombok
     annotationProcessor libs.mapstruct.processor
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    finalizedBy(jacocoTestReport)
 }
+
+jacoco {
+    toolVersion = "0.8.9"
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            enabled = true
+            element = 'PACKAGE'
+            includes = ['org.kurilov.tasklist.service.impl']
+
+            limit {
+                counter = 'INSTRUCTION'
+                value = 'COVEREDRATIO'
+                minimum = 0.80
+            }
+        }
+    }
+}
+
+check.dependsOn(jacocoTestCoverageVerification)

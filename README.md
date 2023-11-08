@@ -2,6 +2,16 @@
 
 This application helps you organize creating and accessing tasks for users.
 
+You can access Swagger and see all available endpoints by visiting `http://localhost:8080/swagger-ui/index.html`
+
+## Sequence diagram
+
+![Sequence diagram](docs/sequence-diagram.png)
+
+## Component diagram
+
+![Component diagram](docs/component-diagram.png)
+
 ## Model diagram
 
 ![Class diagram](docs/TL_Model.png)

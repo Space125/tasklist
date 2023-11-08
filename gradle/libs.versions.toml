@@ -8,6 +8,7 @@ jjwt = "0.12.3"
 mybatis = "3.0.2"
 liquibase = "4.24.0"
 springdoc = "2.2.0"
+preliquibase = "1.4.0"
 
 [libraries]
 mybatis-spring-boot-starter = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter", version.ref = "mybatis" }
@@ -19,6 +20,7 @@ jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
 jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
 jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
 liquibase-core = { module = "org.liquibase:liquibase-core", version.ref = "liquibase" }
+preliquibase-spring-boot-starter = { module = "net.lbruun.springboot:preliquibase-spring-boot-starter", version.ref = "preliquibase" }
 springdoc-openapi-starter-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lonmbok" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
