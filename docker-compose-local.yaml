@@ -1,0 +1,16 @@
+version: "3.1"
+
+volumes:
+  db-data-local:
+    driver: local
+
+services:
+  postgres-local:
+    image: postgres:15.4-alpine
+    container_name: postgres-local
+    env_file:
+      - local.env
+    ports:
+      - "5436:5432"
+    volumes:
+      - db-data-local:/var/lib/postgresql/data

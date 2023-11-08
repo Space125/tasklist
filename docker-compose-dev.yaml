@@ -1,18 +1,25 @@
 version: "3.1"
 
 volumes:
-  db-data:
+  db-data-dev:
     driver: local
 
 services:
-  postgres:
-    image: postgres:15.4-alpine
-    container_name: postgres
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  app:
+    build:
+      context: .
+    container_name: tasklist-app
+    env_file:
+      - develop.env
+    depends_on:
+      - postgres-dev
     ports:
-      - "5436:5432"
+      - "8082:8080"
+
+  postgres-dev:
+    image: postgres:15.4-alpine
+    container_name: postgres-dev
+    env_file:
+      - develop.env
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db-data-dev:/var/lib/postgresql/data
